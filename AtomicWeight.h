@@ -3,20 +3,19 @@
 //    FILE: AtomicWeight.h
 //  AUTHOR: Rob Tillaart
 //    DATE: 2022-03-09
-// VERSION: 0.1.1
+// VERSION: 0.1.2
 // PURPOSE: Arduino library for atomic weights
 //     URL: https://github.com/RobTillaart/AtomicWeight
 
 
 #include "Arduino.h"
 
-#define ATOMIC_WEIGHT_LIB_VERSION         (F("0.1.1"))
+#define ATOMIC_WEIGHT_LIB_VERSION         (F("0.1.2"))
 
 
 /////////////////////////////////////////////////////////////////////////
 //
-//  IS THIS THE RIGHT FORMAT?
-//  or should we build a list of elements
+//  PERIODIC TABLE OF ELEMENTS Class
 //
 class PTOE
 {
@@ -46,6 +45,9 @@ public:
 private:
   uint8_t     _size;
   const float _weightFactor = 1.0 / 222.909;
+  
+  float       _weight(char sep);
+  char        *p;  //  for _weight().
 };
 
 
