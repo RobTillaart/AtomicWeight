@@ -35,6 +35,7 @@ public:
 
 
   char *  name(uint8_t el);
+  uint8_t find(const char * abbrev);
   uint8_t find(char * abbrev);
 
 
