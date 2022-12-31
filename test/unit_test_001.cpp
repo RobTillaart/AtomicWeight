@@ -84,26 +84,30 @@ unittest(test_basic_atom)
 {
   PTOE ptoe;
 
+  int el = 0;
+
   //  NEUTRONIUM
-  assertEqual("n", ptoe.name(0));
-  assertEqual(  0, ptoe.electrons(0));
-  assertEqual(  1, ptoe.neutrons(0));
-  assertEqual(  0, ptoe.protons(0));
-  assertEqual(  1, round(ptoe.weight(0)));
+  assertEqual("n", ptoe.name(el));
+  assertEqual(  0, ptoe.electrons(el));
+  assertEqual(  1, ptoe.neutrons(el));
+  assertEqual(  0, ptoe.protons(el));
+  assertEqual(  1, round(ptoe.weight(el)));
 
   //  HYDROGEN
-  assertEqual("H", ptoe.name(1));
-  assertEqual(  1, ptoe.electrons(1));
-  assertEqual(  0, ptoe.neutrons(1));
-  assertEqual(  1, ptoe.protons(1));
-  assertEqual(  1, round(ptoe.weight(1)));
+  el = 1;
+  assertEqual("H", ptoe.name(el));
+  assertEqual(  1, ptoe.electrons(el));
+  assertEqual(  0, ptoe.neutrons(el));
+  assertEqual(  1, ptoe.protons(el));
+  assertEqual(  1, round(ptoe.weight(el)));
 
   //  URANIUM
-  assertEqual("U", ptoe.name(92));
-  assertEqual( 92, ptoe.electrons(92));
-  assertEqual(100, ptoe.neutrons(92));
-  assertEqual(  0, ptoe.protons(92));
-  assertEqual( 92, round(ptoe.weight(92)));
+  el = 92;
+  assertEqual("U", ptoe.name(el));
+  assertEqual( 92, ptoe.electrons(el));
+  assertEqual(100, ptoe.neutrons(el));
+  assertEqual(  0, ptoe.protons(el));
+  assertEqual( 92, round(ptoe.weight(el)));
 }
 
 
