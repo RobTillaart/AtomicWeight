@@ -111,7 +111,7 @@ unittest(test_basic_atom)
 }
 
 
-unittest(test_weight_formula)
+unittest(test_weight_formula_I)
 {
   PTOE ptoe;
   assertEqualFloat( 22.9914, ptoe.weight("Na"), 0.1);
@@ -121,6 +121,18 @@ unittest(test_weight_formula)
   assertEqualFloat( 116.065, ptoe.weight("C2H2(COOH)2"), 0.1);
   assertEqualFloat( 666.178, ptoe.weight("YBa2Cu3O7"), 0.1);
   assertEqualFloat( 72.1146, ptoe.weight("C(O(H2)2)3"), 0.1);
+}
+
+
+unittest(test_weight_formula_II)
+{
+  PTOE ptoe;
+  assertEqualFloat( 0.00, ptoe.weight("NaCl", "Na"), 0.1);
+  assertEqualFloat( 0.00, ptoe.weight("NaCl", "Cl"), 0.1);
+  assertEqualFloat( 0.00, ptoe.weight("CaCO3", "Ca"), 0.1);
+  assertEqualFloat( 0.00, ptoe.weight("CaCO3", "C"), 0.1);
+  assertEqualFloat( 0.00, ptoe.weight("CaCO3", "O"), 0.1);
+  assertEqualFloat( 0.00, ptoe.weight("C(O(H2)2)3", "H"), 0.1);
 }
 
 
