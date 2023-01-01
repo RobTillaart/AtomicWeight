@@ -129,11 +129,13 @@ unittest(test_weight_formula_II)
   PTOE ptoe;
   assertEqualFloat( 22.9914, ptoe.weight("NaCl", "Na"), 0.1);
   assertEqualFloat( 35.4539, ptoe.weight("NaCl", "Cl"), 0.1);
+  
   assertEqualFloat( 40.0791, ptoe.weight("CaCO3", "Ca"), 0.1);
   assertEqualFloat( 12.0094, ptoe.weight("CaCO3", "C"), 0.1);
   assertEqualFloat( 47.9927, ptoe.weight("CaCO3", "O"), 0.1);
+  
   assertEqualFloat( 12.0094, ptoe.weight("C(O(H2)2)3", "C"), 0.1);
-  assertEqualFloat( 0.00, ptoe.weight("C(O(H2)2)3", "O"), 0.1);
+  assertEqualFloat( 47.9927, ptoe.weight("C(O(H2)2)3", "O"), 0.1);
   assertEqualFloat( 12.1126, ptoe.weight("C(O(H2)2)3", "H"), 0.1);
 }
 
@@ -141,15 +143,17 @@ unittest(test_weight_formula_II)
 unittest(test_massPercentage)
 {
   PTOE ptoe;
-  assertEqualFloat( 100.00, ptoe.massPercentage("Cl2", "Cl"), 0.1);
-  assertEqualFloat( 0.00, ptoe.massPercentage("NaCl", "Na"), 0.1);
-  assertEqualFloat( 0.00, ptoe.massPercentage("NaCl", "Cl"), 0.1);
-  assertEqualFloat( 0.00, ptoe.massPercentage("CaCO3", "Ca"), 0.1);
-  assertEqualFloat( 0.00, ptoe.massPercentage("CaCO3", "C"), 0.1);
-  assertEqualFloat( 0.00, ptoe.massPercentage("CaCO3", "O"), 0.1);
-  assertEqualFloat( 0.00, ptoe.massPercentage("C(O(H2)2)3", "C"), 0.1);
-  assertEqualFloat( 0.00, ptoe.massPercentage("C(O(H2)2)3", "O"), 0.1);
-  assertEqualFloat( 0.00, ptoe.massPercentage("C(O(H2)2)3", "H"), 0.1);
+  assertEqualFloat( 100.000, ptoe.massPercentage("Cl2", "Cl"), 0.1);
+  assertEqualFloat( 39.3383, ptoe.massPercentage("NaCl", "Na"), 0.1);
+  assertEqualFloat( 60.6617, ptoe.massPercentage("NaCl", "Cl"), 0.1);
+
+  assertEqualFloat( 40.0466, ptoe.massPercentage("CaCO3", "Ca"), 0.1);
+  assertEqualFloat( 11.9996, ptoe.massPercentage("CaCO3", "C"), 0.1);
+  assertEqualFloat( 47.9537, ptoe.massPercentage("CaCO3", "O"), 0.1);
+
+  assertEqualFloat( 16.6532, ptoe.massPercentage("C(O(H2)2)3", "C"), 0.1);
+  assertEqualFloat( 66.5505, ptoe.massPercentage("C(O(H2)2)3", "O"), 0.1);
+  assertEqualFloat( 16.7963, ptoe.massPercentage("C(O(H2)2)3", "H"), 0.1);
 }
 
 
