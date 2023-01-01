@@ -127,12 +127,29 @@ unittest(test_weight_formula_I)
 unittest(test_weight_formula_II)
 {
   PTOE ptoe;
-  assertEqualFloat( 0.00, ptoe.weight("NaCl", "Na"), 0.1);
-  assertEqualFloat( 0.00, ptoe.weight("NaCl", "Cl"), 0.1);
-  assertEqualFloat( 0.00, ptoe.weight("CaCO3", "Ca"), 0.1);
-  assertEqualFloat( 0.00, ptoe.weight("CaCO3", "C"), 0.1);
-  assertEqualFloat( 0.00, ptoe.weight("CaCO3", "O"), 0.1);
-  assertEqualFloat( 0.00, ptoe.weight("C(O(H2)2)3", "H"), 0.1);
+  assertEqualFloat( 22.9914, ptoe.weight("NaCl", "Na"), 0.1);
+  assertEqualFloat( 35.4539, ptoe.weight("NaCl", "Cl"), 0.1);
+  assertEqualFloat( 40.0791, ptoe.weight("CaCO3", "Ca"), 0.1);
+  assertEqualFloat( 12.0094, ptoe.weight("CaCO3", "C"), 0.1);
+  assertEqualFloat( 47.9927, ptoe.weight("CaCO3", "O"), 0.1);
+  assertEqualFloat( 12.0094, ptoe.weight("C(O(H2)2)3", "C"), 0.1);
+  assertEqualFloat( 0.00, ptoe.weight("C(O(H2)2)3", "O"), 0.1);
+  assertEqualFloat( 12.1126, ptoe.weight("C(O(H2)2)3", "H"), 0.1);
+}
+
+
+unittest(test_massPercentage)
+{
+  PTOE ptoe;
+  assertEqualFloat( 100.00, ptoe.massPercentage("Cl2", "Cl"), 0.1);
+  assertEqualFloat( 0.00, ptoe.massPercentage("NaCl", "Na"), 0.1);
+  assertEqualFloat( 0.00, ptoe.massPercentage("NaCl", "Cl"), 0.1);
+  assertEqualFloat( 0.00, ptoe.massPercentage("CaCO3", "Ca"), 0.1);
+  assertEqualFloat( 0.00, ptoe.massPercentage("CaCO3", "C"), 0.1);
+  assertEqualFloat( 0.00, ptoe.massPercentage("CaCO3", "O"), 0.1);
+  assertEqualFloat( 0.00, ptoe.massPercentage("C(O(H2)2)3", "C"), 0.1);
+  assertEqualFloat( 0.00, ptoe.massPercentage("C(O(H2)2)3", "O"), 0.1);
+  assertEqualFloat( 0.00, ptoe.massPercentage("C(O(H2)2)3", "H"), 0.1);
 }
 
 
