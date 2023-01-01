@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.1.3] - 2023-01-01
 - refactor interface
-- add **subWeight(formula, element)**
+- add **weight(formula, element)**
 - add **massPercentage(formula, element)**
 - fix version number in .cpp
 - update readme.md.
