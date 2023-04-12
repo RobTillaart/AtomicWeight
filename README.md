@@ -24,6 +24,10 @@ from a formula, e.g. the weight of the Oxygen atoms in the **H2SO4** molecule.
 
 This latter function allows the library to calculate the **massPercentage()** too.
 
+The library also has a **count()** function, to count the atoms in a formula.
+Derived is the **atomPercentage()** function to give the percentage of atoms 
+that is a certain element.
+
 Note: library is experimental. More testing is needed.
 
 
@@ -109,23 +113,25 @@ The functions returns a float, so to get the integer weight, one should use **ro
 
 If the formula can not be parsed it will return a weight of 0.
 
-(Since 0.1.2)
-The weight formula parsing supports brackets () to indicate groups in the formula.
+The **weight(formula, element)** function is meant to calculate the total weight of one element
+in a molecule. E.g one can weigh the H atoms in H2O (2 of 18).
+
+
+#### Formulas
+
+The weight formula parsing supports round brackets () to indicate groups in the formula.
 
 Valid formula's might look like:
 - "B" = single element
 - "Na" = single element
 - "C6" = single element, multiple times
 - "H2SO4" compound molecule, no groups
-- "C6(COOH)2" compound molecule, with repeating groups
+- "C6(COOH)2" compound molecule, with a repeating group
 - "YBa2Cu3O7" some superconductor-ish material
-
-(Since 0.1.3)
-The **weight(formula, element)** function is meant to calculate the total weight of one element
-in a molecule. E.g one can weigh the H atoms in H2O (2 of 18).
+- "Ba((OH)4(COOH)2)c" recursive repeating groups (artificial example).
 
 
-#### massPercentage
+#### MassPercentage
 
 The **massPercentage(formula, element)** function can determine the percentage of the weight 
 a selected element has in a formula, e.g. the weight of the Oxygen in **H2SO4**.
@@ -135,14 +141,10 @@ If you want to do that for all elements it might be more efficient to calculate 
 of the whole formula once.
 
 
-#### debug
+#### Debug
 
-- **float weightFactor()** returns weightFactor.
-
-
-## Operation
-
-See examples
+- **float weightFactor()** returns the weightFactor, that was used to
+minimize the memory used for the elements mass lookup table.
 
 
 ## Future
@@ -177,7 +179,7 @@ See examples
   - alphabetical array?
   
 
-#### wont (unless)
+#### Wont (unless)
 
 - support hydrates ?
   - **Ba(BrO3)2·2H2O**  new separator + starts with number.

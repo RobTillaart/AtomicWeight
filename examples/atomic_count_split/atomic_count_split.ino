@@ -1,4 +1,4 @@
-//    FILE: atomic_weight_split.ino
+//    FILE: atomic_count_split.ino
 //  AUTHOR: Rob Tillaart
 // PURPOSE: demo
 //     URL: https://github.com/RobTillaart/AtomicWeight
@@ -12,18 +12,17 @@ PTOE ptoe;
 
 //  https://en.wikipedia.org/wiki/Glossary_of_chemical_formulae
 
-char formula0[24] = "C6H6O6";
-char formula1[24] = "Al2Si2O5(OH)4";    //  kaolin
-char formula2[24] = "H2SO4";
-char formula3[24] = "CuO2";
-char formula4[24] = "(COH)3(COH)2COH";
-// char formula4[24] = "(CH)6O6";
-// char formula4[24] = "xH2";           // fails => 0;
-char formula5[24] = "YBa2Cu3O7";
-char formula6[24] = "Al(NO2)3";         //  aluminium nitrite
-char formula7[24] = "Ba(C2H3O2)2";      //  barium acetate
-
-uint8_t cnt;
+char formula0[24] = "C6H6O6";               //  Benzenehexol
+char formula1[24] = "Al2Si2O5(OH)4";        //  kaolin
+char formula2[24] = "H2SO4";                //  sulpheric acid
+char formula3[24] = "CuO2";                 //  CopperOxide
+char formula4[24] = "(COH)3(COH)2COH";      //  fake
+// char formula4[24] = "(CH)6O6";           //  fake
+// char formula4[24] = "xH2";               //  fails => 0;
+char formula5[24] = "YBa2Cu3O7";            //  superconductor
+char formula6[24] = "Al(NO2)3";             //  aluminium nitrite
+char formula7[24] = "Ba(C2H3O2)2";          //  barium acetate
+char formula8[24] = "Ca2SbMg4FeBe2Si4O20";  //  Welshite
 
 
 void setup()
@@ -48,6 +47,7 @@ void setup()
   test(formula5);
   test(formula6);
   test(formula7);
+  test(formula8);
 
   Serial.println("done");
 }

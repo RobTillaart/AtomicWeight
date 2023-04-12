@@ -1,74 +1,87 @@
 BOARD:  Arduino UNO
 IDE:    1.8.19
 
-D:\Rob\WORK\Arduino\libraries\AtomicWeight\examples\atomic_weight_split\atomic_weight_split.ino
-ATOMIC_WEIGHT_LIB_VERSION: 0.1.3
+atomic_count_split.ino
+ATOMIC_WEIGHT_LIB_VERSION: 0.1.4
 
-C
+C	1 atoms.
 C	100.000
-TIME:	28 us.
 
 
-C6
+C6	6 atoms.
 C	100.000
-TIME:	28 us.
 
 
-CCCCCCC
+CCCCCCC	7 atoms.
 C	100.000
-TIME:	160 us.
 
 
-He6
+He6	6 atoms.
 He	100.000
-TIME:	24 us.
 
 
-NaCl
-Na	39.338
-Cl	60.662
-TIME:	88 us.
+NaCl	2 atoms.
+Na	50.000
+Cl	50.000
 
 
-C6H6O6
-C	41.388
-H	3.479
-O	55.133
-TIME:	76 us.
+C6H6O6	18 atoms.
+C	33.333
+H	33.333
+O	33.333
 
 
-((COH)3)2
-C	41.388
-O	55.133
-H	3.479
-TIME:	76 us.
+Al2Si2O5(OH)4	17 atoms.
+Al	11.765
+Si	11.765
+O	52.941
+H	23.529
 
 
-H2SO4
-H	2.058
-S	32.696
-O	65.246
-TIME:	92 us.
+H2SO4	7 atoms.
+H	28.571
+S	14.286
+O	57.143
 
 
-CuO2
-Cu	66.512
-O	33.488
-TIME:	108 us.
+CuO2	3 atoms.
+Cu	33.333
+O	66.667
 
 
-(COH)3(COH)2COH
-C	41.388
-O	55.133
-H	3.479
-TIME:	204 us.
+(COH)3(COH)2COH	18 atoms.
+C	33.333
+O	33.333
+H	33.333
 
 
-YBa2Cu3O7
-Y	13.346
-Ba	41.228
-Cu	28.617
-O	16.810
-TIME:	328 us.
+YBa2Cu3O7	13 atoms.
+Y	7.692
+Ba	15.385
+Cu	23.077
+O	53.846
+
+
+Al(NO2)3	10 atoms.
+Al	10.000
+N	30.000
+O	60.000
+
+
+Ba(C2H3O2)2	15 atoms.
+Ba	6.667
+C	26.667
+H	40.000
+O	26.667
+
+
+Ca2SbMg4FeBe2Si4O20	34 atoms.
+Ca	5.882
+Sb	2.941
+Mg	11.765
+Fe	2.941
+Be	5.882
+Si	11.765
+O	58.824
 
 done
