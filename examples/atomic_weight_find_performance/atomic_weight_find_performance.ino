@@ -10,7 +10,8 @@
 PTOE ptoe;
 uint32_t start, stop;
 
-volatile uint8_t n = 0;
+volatile char *p = 0;
+volatile int n;
 
 void setup()
 {
@@ -22,7 +23,7 @@ void setup()
   start = micros();
   for (int i = 0; i < 119; i++)
   {
-    n = ptoe.name(i);
+    p = ptoe.name(i);
   }
   stop = micros();
   Serial.print("NAME:\t");
