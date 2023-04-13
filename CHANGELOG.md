@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - add guarding with **size** parameter in **weight()**
 - improved usage **abbrev**(name) versus **el**(index).
 - improved readme.md.
+- add define for **ATOMIC_WEIGHT_MAX_SPLIT_LIST**
 - update keywords.txt.
 - minor edits.
 

@@ -8,42 +8,41 @@
 
 # AtomicWeight
 
-Arduino library for atomic weights.
+Arduino library for atomic weights, and related functions.
 
 
 ## Description
 
-This library is mainly to be used as a base for educational purposes.
-Learning the **periodic table of elements**, the abbreviations and weight.
+This library is mainly written to be used for educational purposes.
+Learning the **periodic table of elements**, the abbreviations and weights.
 It also provides the number of electrons, neutrons and protons per element.
 
 Furthermore the library has a **weight()** function, which returns the weight
 of either an element or of a formula (e.g. a molecule). 
 The weight function can also be used to get the weight of a particular element
-from a formula, e.g. the weight of the Oxygen atoms in the **H2SO4** molecule.
-
+within a formula, e.g. the total weight of all Oxygen atoms in a **H2SO4** molecule.
 This latter function allows the library to calculate the **massPercentage()** too.
 
-The library also has a **count()** function, to count the atoms in a formula.
-Derived is the **atomPercentage()** function to give the percentage of atoms 
-that is a certain element.
+The library has a **count()** function, to count the atoms in a given formula.
+Derived is the **atomPercentage()** function which returns the percentage of atoms 
+that is of a certain element. Oxygen in H2S04 is 4 in 7 which is about 57%.
 
 Since 0.1.5 the library supports conversion from moles to grams and back.
-This allows one to easily get the amount of grams of some formula given a 
-needed amount of moles.
-In combination with a load cell one could create a "molar-scale".
-Another application is create lookup-tables, see example.
+This allows one to easily get the amount of grams of some formula one has to weigh 
+to get a needed amount of moles.
+With these functions, in combination with a load cell, one could create a "molar-scale".
+Another application for the conversion functions is create lookup-tables, see example.
 
-Note: library is experimental. More testing is needed.
+Note: the library is experimental. More testing is needed. Feedback welcome.
 
 
 #### Internal
 
-The PTOE class uses a table that has compressed weight to save RAM.
+The PTOE class uses a table that has "compressed" weight to save RAM.
 - it stores weights as **uint16_t**, 0..65535 instead of floats.
 - weight factor = 222.909  = 65535.0 / weight heaviest element(118)
-- error < 0.3%
-- the table (and thus the class) does not handle isotopes.
+- relative error per element is less than 0.15%
+- the table (and thus the class) does not handle isotopes of elements.
 
 
 #### Related
@@ -63,24 +62,22 @@ Libraries useful to build the "molar-scale"
 ```
 
 The parameter **element** in the following functions is 0..118.  
-(element 0 being a single neutron).
+(element 0 being 'n' == a single neutron).
 
 - **PTOE(uint8_t size = 118)** Constructor (Periodic Table Of Elements).
 Default it holds all 118 elements. 
-The parameter size is used in the **find()** function for now.
+The parameter size is used in the **find()** and guards some parameters.
 - **uint8_t electrons(uint8_t element)** returns the number of electrons of the element.
 - **uint8_t neutrons(uint8_t element)** returns the number of neutrons of the element.
 - **uint8_t protons(uint8_t element)** returns the number of protons of the element.
 - **float weight(uint8_t element)** returns the weight of the element.
-The error is less than 0.3%, as the internal table uses "weight compression" to save RAM.
+The error is less than 0.15%, as the internal table uses "compression" to save RAM.
 - **float weight(char \* formula, char \* abbreviation == NULL)** see below.
-  - If (abbreviation != NULL) returns the total weight of one element in a formula.
   - if (abbreviation == NULL) returns the weight of the whole formula.
-  - Returns 0 if it cannot parse the formula given.
+  - If (abbreviation != NULL) returns the total weight of one element in a formula.
+  - Returns 0 if it cannot parse the given formula.
 - **float massPercentage(char \* formula, char \* abbreviation)**
-Returns mass percentage of a selected element in a formula.
-
-
+Returns mass percentage of a given element in a formula.
 - **uint8_t find(char \* abbreviation)** returns the element number.
 This function is relative expensive as it searches linear through the internal array of elements.
 Note: the find function is case sensitive.
@@ -93,7 +90,7 @@ If the element is out of range **NULL** will be returned.
 (0.1.4 experimental)
 - **uint8_t splitElements(const char \* formula)** split a formula in an internal list of elements.
 Returns the number of different elements found.
-Max nr of elements is hardcoded to 20.
+Maximum number of elements is hardcoded to 20, which is often enough.
 - **uint8_t element(uint8_t el)** access the internal list of elements by index el.
 Note: el should be between 0 and the maximum number returned by **splitElements()**.
 See example.
@@ -130,7 +127,8 @@ The **weight(formula)** call is meant to calculate the weight of a molecule defi
 A molecule is defined as one or more atoms.
 The functions returns a float, so to get the integer weight, one should use **round()**.
 
-If the formula can not be parsed it will return a weight of 0.
+If the formula can not be parsed, e.g. it contains non existing elements, 
+the **weight()** function will return a weight of 0.
 
 The **weight(formula, abbreviation)** function is meant to calculate the total weight 
 of one element (by abbreviation) in a molecule. 
@@ -184,6 +182,9 @@ minimize the memory used for the elements mass lookup table.
 
 - improve documentation
   - reorganize.
+- A better weight factor would be 201.3868  (see example)
+  - relative error is less than 0.09%  (which is 40% better than 0.15%)
+  - for 0.2.0 release.
 
 
 #### Should
@@ -212,6 +213,8 @@ minimize the memory used for the elements mass lookup table.
   - ==> more memory
 - support \[] square brackets too.
   - (NH4)2\[Pt(SCN)6]
+- optimize weigh-factor
+  - Arduino sketch
 
 
 #### Wont (unless)
@@ -229,6 +232,7 @@ minimize the memory used for the elements mass lookup table.
 - parameters element should be less than \_size
   - user responsibility
 - more information?
+  - will not handle isotopes (too much memory needed)
   - database needed
 - Electron bands 
   - K L M etc?

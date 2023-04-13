@@ -209,7 +209,7 @@ char * PTOE::name(const uint8_t el)
 uint8_t PTOE::find(const char * abbrev)
 {
   //  case insensitive?
-  //  caching? 
+  //  caching?
   //  param check?
   //  uint8_t len = strlen(abbrev);
   //  if ((len == 1) || (len == 2))
@@ -300,14 +300,14 @@ uint8_t PTOE::splitElements(const char * formula)
     bool found = false;
     for (int i = 0; i < count; i++)
     {
-      if (_elems[i] == z)
+      if (_splitList[i] == z)
       {
         found = true;
       }
     }
-    if (found == false)
+    if ((found == false) && (count < ATOMIC_WEIGHT_MAX_SPLIT_LIST))
     {
-      _elems[count] = z;
+      _splitList[count] = z;
       count++;
     }
   }
@@ -317,9 +317,9 @@ uint8_t PTOE::splitElements(const char * formula)
   // {
     // Serial.print(i);
     // Serial.print('\t');
-    // Serial.print(_elems[i]);
+    // Serial.print(_splitList[i]);
     // Serial.print('\t');
-    // Serial.println(name(_elems[i]));
+    // Serial.println(name(_splitList[i]));
   // }
 
   _found = count;
@@ -330,7 +330,7 @@ uint8_t PTOE::splitElements(const char * formula)
 uint8_t PTOE::element(uint8_t el)
 {
   if (el >= _found) return 255;
-  return _elems[el];
+  return _splitList[el];
 }
 
 

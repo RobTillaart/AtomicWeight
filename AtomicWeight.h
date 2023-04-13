@@ -13,6 +13,11 @@
 #define ATOMIC_WEIGHT_LIB_VERSION         (F("0.1.5"))
 
 
+#ifndef ATOMIC_WEIGHT_MAX_SPLIT_LIST
+#define ATOMIC_WEIGHT_MAX_SPLIT_LIST 20
+#endif
+
+
 /////////////////////////////////////////////////////////////////////////
 //
 //  PERIODIC TABLE OF ELEMENTS Class
@@ -77,7 +82,7 @@ private:
   char        *p;  //  for _weight() and _count()
 
   //  for splitElements
-  uint8_t     _elems[20];  //  max 20 elements in formula.
+  uint8_t     _splitList[ATOMIC_WEIGHT_MAX_SPLIT_LIST]; //  default 20
   uint8_t     _found;
 };
 
