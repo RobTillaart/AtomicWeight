@@ -1,7 +1,7 @@
-//    FILE: generate_uint16_table_2.ino
+//    FILE: search_for_weight_factor.ino
 //  AUTHOR: Rob Tillaart
 //     URL: https://github.com/RobTillaart/AtomicWeight
-// PURPOSE: find an optimal weigh factor.
+// PURPOSE: find an optimal weight factor.
 //
 //
 //  takes serious time
@@ -34,8 +34,8 @@ void setup()
     {
       val = round(elements[i].weight * factor);
       float absError = abs( elements[i].weight - val / factor);
-      float error =  absError / elements[i].weight;
-      if (error > mx) mx = error;
+      float relError =  absError / elements[i].weight;
+      if (relError > mx) mx = relError;
       sum += absError;
     }
     if (mx < minError)
