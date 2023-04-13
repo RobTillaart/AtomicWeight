@@ -28,6 +28,12 @@ The library also has a **count()** function, to count the atoms in a formula.
 Derived is the **atomPercentage()** function to give the percentage of atoms 
 that is a certain element.
 
+Since 0.1.5 the library supports conversion from moles to grams and back.
+This allows one to easily get the amount of grams of some formula given a 
+needed amount of moles.
+In combination with a load cell one could create a "molar-scale".
+Another application is create lookup-tables, see example.
+
 Note: library is experimental. More testing is needed.
 
 
@@ -42,9 +48,12 @@ The PTOE class uses a table that has compressed weight to save RAM.
 
 #### Related
 
-Useful list of formulae.
-
+List of formulae to play with.
 - https://en.wikipedia.org/wiki/Glossary_of_chemical_formulae
+
+Libraries useful to build the "molar-scale"
+- https://github.com/RobTillaart/HX711
+- https://github.com/RobTillaart/weight
 
 
 ## Interface
@@ -56,15 +65,17 @@ Useful list of formulae.
 The parameter **element** in the following functions is 0..118.  
 (element 0 being a single neutron).
 
-- **PTOE()** Constructor (Periodic Table Of Elements)
+- **PTOE(uint8_t size = 118)** Constructor (Periodic Table Of Elements).
+Default it holds all 118 elements. 
+The parameter size is used in the **find()** function for now.
 - **uint8_t electrons(uint8_t element)** returns the number of electrons of the element.
 - **uint8_t neutrons(uint8_t element)** returns the number of neutrons of the element.
 - **uint8_t protons(uint8_t element)** returns the number of protons of the element.
 - **float weight(uint8_t element)** returns the weight of the element.
-The error < 0.3%, table uses "weight compression".
+The error is less than 0.3%, as the internal table uses "weight compression" to save RAM.
 - **float weight(char \* formula, char \* abbreviation == NULL)** see below.
-  - If (el != NULL) returns the total weight of one element in a formula.
-  - if (el == NULL) returns the weight of the whole formula.
+  - If (abbreviation != NULL) returns the total weight of one element in a formula.
+  - if (abbreviation == NULL) returns the weight of the whole formula.
   - Returns 0 if it cannot parse the formula given.
 - **float massPercentage(char \* formula, char \* abbreviation)**
 Returns mass percentage of a selected element in a formula.
@@ -72,7 +83,9 @@ Returns mass percentage of a selected element in a formula.
 
 - **uint8_t find(char \* abbreviation)** returns the element number.
 This function is relative expensive as it searches linear through the internal array of elements.
+Note: the find function is case sensitive.
 - **char \* name(uint8_t element)** returns the abbreviation of element.
+If the element is out of range **NULL** will be returned.
 
 
 #### SplitElements 
@@ -82,58 +95,76 @@ This function is relative expensive as it searches linear through the internal a
 Returns the number of different elements found.
 Max nr of elements is hardcoded to 20.
 - **uint8_t element(uint8_t el)** access the internal list of elements by index el.
-Note: el should be between 0 and the max nr returned by **splitElements()**.
+Note: el should be between 0 and the maximum number returned by **splitElements()**.
 See example.
 
 
 #### AtomPercentage
 
 (0.1.4 experimental)
-- **uint32_t count(const char \* formula, const char \* el = NULL)**
-  - If (el != NULL) returns the total atoms of one element in a formula.
-  - if (el == NULL) returns the total atoms of the whole formula.
+- **uint32_t count(const char \* formula, const char \* abbreviation = NULL)**
+  - If (abbreviation != NULL) returns the total atoms of one element in a formula.
+  - if (abbreviation == NULL) returns the total atoms of the whole formula.
   - Returns 0 if it cannot parse the formula given.
-- **float atomPercentage(const char \* formula, const char \* el)**
+- **float atomPercentage(const char \* formula, const char \* abbreviation)**
 Returns atom percentage of the selected element in a formula.
+
+
+#### Conversion grams moles
+
+- **float moles2grams(const char \* formula, float moles = 1.0)**
+Returns the amount of grams needed for a given amount of moles.
+The default moles == 1, returns the basic conversion factor.
+- **float grams2moles(const char \* formula, float grams = 1.0)**
+Returns the amount of moles for a given amount of grams.
+The default moles == 1, returns the basic conversion factor.
+
+These functions can be used, e.g. if one wants to solve 2 moles of KOH
+into 10 litres of water to get a defined pH, now much grams I need to weigh?
 
 
 #### Weight
 
 The **weight(uint8_t element)** call returns the weight of a single atom (by index).
-The **weight(formula)** call is meant to calculate the weight of a molecule.
+The **weight(formula)** call is meant to calculate the weight of a molecule defined by the formula.
 A molecule is defined as one or more atoms.
-
-The latter function does not care about the order of the atoms. 
-So "C6H6" is equal to "H6C6" or even "CCCCCCHHHHHH" or "C3H3C3H3" etc.
-Elements are defined as one or two characters long.
-The first char must be upper case, the (optional) second must be lower case.
-If no number is provided the count of 1 is assumed.
-
 The functions returns a float, so to get the integer weight, one should use **round()**.
 
 If the formula can not be parsed it will return a weight of 0.
 
-The **weight(formula, element)** function is meant to calculate the total weight of one element
-in a molecule. E.g one can weigh the H atoms in H2O (2 of 18).
+The **weight(formula, abbreviation)** function is meant to calculate the total weight 
+of one element (by abbreviation) in a molecule. 
+E.g one can weigh the H atoms in H2O (2 of 18).
 
 
 #### Formulas
 
-The weight formula parsing supports round brackets () to indicate groups in the formula.
+All element abbreviations are one or two characters long.
+The first char must be upper case, the (optional) second must be lower case.
+(except for element 0, n == neutronium, which is added as placeholder).
+Elements can be followed by a number indicating an amount, no number implies 1.
+
+Formulas do not care about the order of the atoms. 
+So "C6H6" is equal to "H6C6" or even "CCCCCCHHHHHH" or "C3H3C3H3" etc.
+
+The formula parsing supports round brackets () to indicate groups in the formula.
+The library does **not** support square brackets to indicate a group.
+
+The library does **not** support \*6H20 to indicate hydration.
 
 Valid formula's might look like:
-- "B" = single element
-- "Na" = single element
-- "C6" = single element, multiple times
-- "H2SO4" compound molecule, no groups
-- "C6(COOH)2" compound molecule, with a repeating group
-- "YBa2Cu3O7" some superconductor-ish material
+- "B" = single element, Hydrogen, 1 atom.
+- "Na" = single element, Sodium, 1 atom..
+- "C6" = single element, multiple times, Benzene.
+- "H2SO4" compound molecule, no groups (sulphuric acid).
+- "C6(COOH)2" repeating group, (artificial example).
+- "YBa2Cu3O7" compound molecule, == some superconductor-ish material.
 - "Ba((OH)4(COOH)2)c" recursive repeating groups (artificial example).
 
 
 #### MassPercentage
 
-The **massPercentage(formula, element)** function can determine the percentage of the weight 
+The **massPercentage(formula, abbreviation)** function can determine the percentage of the weight 
 a selected element has in a formula, e.g. the weight of the Oxygen in **H2SO4**.
 This is calculated by dividing the weight of the element by the total weight.
 
@@ -160,10 +191,10 @@ minimize the memory used for the elements mass lookup table.
 - add examples
 - extend formula parser with error codes.
   - which ones?
-- support \[] square brackets too.
-  - (NH4)2\[Pt(SCN)6]
 - look for optimizations
-  - 3x almost same parser 
+  - 3x almost same parser
+  - PROGMEM ?
+
 
 #### Could
 
@@ -173,14 +204,20 @@ minimize the memory used for the elements mass lookup table.
   - room temperature + sea level pressure
 - (short) table of English names
   - which ones ?
-- case (in)sensitive **find()**
-  - always or configurable
-  - more expensive search
-  - alphabetical array?
-  
+  - separate include file?
+  - rename **name()** to **abbrev()** ?
+  - add **longName()**?
+- performance **find()**
+  - alphabetical array? tree? 
+  - ==> more memory
+- support \[] square brackets too.
+  - (NH4)2\[Pt(SCN)6]
+
 
 #### Wont (unless)
 
+- case insensitive **find()**
+  element 0 is defined as n conflict with N
 - support hydrates ?
   - **Ba(BrO3)2·2H2O**  new separator + starts with number.
   - other liquids than water?
@@ -193,7 +230,9 @@ minimize the memory used for the elements mass lookup table.
   - user responsibility
 - more information?
   - database needed
-- Electron bands K L M etc?
+- Electron bands 
+  - K L M etc?
+  - valence
 - temperatures,
   - melt
   - evaporate
