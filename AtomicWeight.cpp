@@ -8,6 +8,7 @@
 
 
 #include "AtomicWeight.h"
+#include "elements_uint16.h"
 
 
 PTOE::PTOE(const uint8_t size)
