@@ -14,15 +14,17 @@ Arduino library for atomic weights, and related functions.
 ## Description
 
 This library is mainly written to be used for educational purposes.
+Of course are other applications possible.
 Learning the **periodic table of elements**, the abbreviations and weights.
-It also provides the number of electrons, neutrons and protons per element.
+It provides the number of electrons, neutrons and protons per element.
 
 Furthermore the library has a **weight()** function, which returns the weight
 of either an element or of a formula (e.g. a molecule) in **Daltons**.
 One **Dalton** = 1/12th of the weight of a Carbon atom.
-One might think of it as the number of nucleons (= proton or neutron).
+The SI abbreviation for **Dalton** == **Da**.
+One might think of it as (roughly) the number of nucleons (= protons + neutrons).
 
-The weight function can also be used to get the weight of a particular element
+The **weight()** function can also be used to get the weight of a particular element
 within a formula, e.g. the total weight of all Oxygen atoms in a **H2SO4** molecule.
 This latter function allows the library to calculate the **massPercentage()** too.
 
@@ -222,12 +224,17 @@ If you want to do that for all elements it might be more efficient to calculate 
 of the whole formula once.
 
 
-#### AVOGADRO
+#### Avogadro, Dalton, electronVolt.
 
-The library now provides two SI constants:
+The library provides the following (SI) constants:
 - **const float AVOGADRO = 6.02214076e+23** number of particles in one mole.
 - **const float DALTON = 1.66053907e-24** weight of one nucleon in grams.
-- relation: DALTON \* AVOGADRO == 1.0
+  - relation: DALTON \* AVOGADRO == 1.0
+- **const float ELEKTRON_VOLT_JOULE = 1.602176565e-19** eV in Joule
+- **const float ELEKTRON_VOLT_GRAM = 1.7826619e-39** eV in grams  (E=Mc2)
+- **const float DALTON_JOULE = 1.036427015e5** == DALTON / ELEKTRON_VOLT_JOULE.
+- **const float DALTON_EV = 931.4940954e12** == DALTON / ELEKTRON_VOLT_GRAM.
+Can be used to convert the atomic mass to electron volt.
 
 These constants are not directly used in the library however they fit the scope of the library. 
 
@@ -256,25 +263,34 @@ minimize the memory used for the elements mass lookup table.
 
 #### Should
 
-- extend formula parser with error codes.
-  - which ones?
-- look for optimizations
-  - 3x almost same parser
-  - PROGMEM ?
+- overload functions
+  - **uint32_t protons(formula)** worker, formula can be single element.
+  - **uint32_t neutrons(formula)** uses protons()
+  - **uint32_t electrons(formula)** uses protons()
+- add weight of electron as constant. for completeness.
+- functions around **AVOGADRO**, **DALTON** etc
+  - **float weightEV(formula)**
+  - **float dalton2EV(float Dalton)** to express mass in eV.
+  - **float dalton2Joule(float Dalton)**
 
 
 #### Could
 
 - extend unit tests
+- extend formula parser with error codes.
+  - which ones?
+- look for optimizations
+  - 3x almost same parser
+  - PROGMEM ?
 - state table
   - liquid, gas, solid, unknown  (2 bits per element) = ~30 bytes
   - room temperature + sea level pressure
+  - separate file like elements_name.h
 - performance **find()**
   - alphabetical array? tree? 
-  - ==> more memory
+  - ==> more memory...
 - support \[] square brackets too.
   - (NH4)2\[Pt(SCN)6]
-- functions around **AVOGADRO** and **DALTON** number?
 
 
 #### Wont (unless)
@@ -288,7 +304,7 @@ minimize the memory used for the elements mass lookup table.
 - is there a faster data structure?
   - search by nr is O(1)
   - search by name is O(n)
-  - only if more RAM is used.
+  - only if more RAM is used. => not
 - parameters element should be less than \_size
   - user responsibility
 - more information?

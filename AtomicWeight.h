@@ -19,8 +19,13 @@
 #endif
 
 
-const float AVOGADRO = 6.02214076e+23;    //  1.0 / DALTON.
-const float DALTON   = 1.66053907e-24;    //  weight in grams of one nucleon.
+//  Miscellaneous related constants.
+const float AVOGADRO            = 6.02214076e+23;      //  1.0 / DALTON.
+const float DALTON              = 1.66053907e-24;      //  weight in grams of one nucleon.
+const float ELEKTRON_VOLT_JOULE = 1.602176565e-19;     //  eV in Joule
+const float ELEKTRON_VOLT_GRAM  = 1.7826619e-39;       //  eV in grams
+const float DALTON_EV           = DALTON / ELEKTRON_VOLT_GRAM;
+const float DALTON_JOULE        = DALTON / ELEKTRON_VOLT_JOULE;
 
 
 

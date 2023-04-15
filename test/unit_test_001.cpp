@@ -51,6 +51,11 @@ unittest(test_constants)
   assertEqualFloat(6.02214076e+23, AVOGADRO, 1e17);
   assertEqualFloat(1.66053907e-24, DALTON, 1e-30);
   assertEqualFloat(1.0, DALTON * AVOGADRO, 1e-5);
+
+  assertEqualFloat(1.602176565e-19, ELEKTRON_VOLT_JOULE, 1e-5);
+  assertEqualFloat(1.7826619e-39, ELEKTRON_VOLT_GRAM, 1e-5);
+  assertEqualFloat(DALTON / ELEKTRON_VOLT_GRAM, DALTON_EV, 1e-5);
+  assertEqualFloat(DALTON / ELEKTRON_VOLT_JOULE, DALTON_JOULE, 1e-5);
 }
 
 

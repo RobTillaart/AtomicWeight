@@ -12,9 +12,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - move **ATOMIC_WEIGHT_FACTOR** to **elements_uint16.h** file.
 - create **elements_name.h** file with full element names. Uses ~1670 bytes of RAM.
   so will **NOT** work on all boards.
-- update unit test to new weight factor.
-- add const float **AVOGADRO** = 6.02214076e+23; number of particles in one mole.
-- add const float **DALTON** = 1.66053907e-24; weight of one nucleon in grams.
+- add related constants
+  - **AVOGADRO** = 6.02214076e+23; number of particles in one mole.
+  - **DALTON** = 1.66053907e-24; weight of one nucleon in grams.
+  - **ELEKTRON_VOLT_JOULE** = 1.602176565e-19; eV in Joule
+  - **ELEKTRON_VOLT_GRAM**  = 1.7826619e-39; eV in grams
+  - **DALTON_EV** = 931.4940954e12 = DALTON / ELEKTRON_VOLT_GRAM
+  - **DALTON_JOULE** = 1.036427015e5 = DALTON / ELEKTRON_VOLT_JOULE
+- update unit tests.
 - update readme.md
 - update keywords.txt.
 
