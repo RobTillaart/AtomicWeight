@@ -9,7 +9,7 @@
 
 
 #include "Arduino.h"
-
+#include "elements_uint16.h"
 
 #define ATOMIC_WEIGHT_LIB_VERSION         (F("0.2.0"))
 
