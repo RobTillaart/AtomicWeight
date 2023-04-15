@@ -51,7 +51,7 @@ void setup()
     Serial.print("  {\"");
     Serial.print(elements[i].name);
     Serial.print("\", ");
-    Serial.print(round(elements[i].weight * weightFactor));
+    Serial.print(round(elements[i].weight * WEIGHT_FACTOR));
     Serial.println("},");
   }
   Serial.println("};");
