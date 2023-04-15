@@ -19,7 +19,8 @@
 #endif
 
 
-const float AVOGADRO = 6.02214076e+23;
+const float AVOGADRO = 6.02214076e+23;    //  1.0 / DALTON.
+const float DALTON   = 1.66053907e-24;    //  weight in grams of one nucleon.
 
 
 

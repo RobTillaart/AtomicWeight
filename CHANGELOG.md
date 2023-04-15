@@ -8,11 +8,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.2.0] - 2023-04-15
 - use new weight factor 201.3868 to reduce maximum relative error
-- create separate **elements_uint16.h** file.
-- moved **ATOMIC_WEIGHT_FACTOR** to **elements_uint16.h** file.
-- updated unit test to new weight factor
-- add const float **AVOGADRO** = 6.02214076e+23;
-- updated readme.md
+- create **elements_uint16.h** file.
+- move **ATOMIC_WEIGHT_FACTOR** to **elements_uint16.h** file.
+- create **elements_name.h** file with full element names. Uses ~1670 bytes of RAM.
+  so will **NOT** work on all boards.
+- update unit test to new weight factor.
+- add const float **AVOGADRO** = 6.02214076e+23; number of particles in one mole.
+- add const float **DALTON** = 1.66053907e-24; weight of one nucleon in grams.
+- update readme.md
+- update keywords.txt.
 
 
 ## [0.1.5] - 2023-04-13

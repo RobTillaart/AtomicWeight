@@ -33,6 +33,7 @@
 
 
 #include "AtomicWeight.h"
+#include "elements_uint16.h"
 
 
 unittest_setup()
@@ -48,8 +49,11 @@ unittest_teardown()
 
 unittest(test_constants)
 {
-  assertEqual(6.02214076e+23, AVOGADRO);
   assertEqual(1.0 / 201.3868, ATOMIC_WEIGHT_FACTOR);
+
+  assertEqualFloat(6.02214076e+23, AVOGADRO, 1e16);
+  assertEqualFloat(1.66053907e-24, DALTON, 1e-30);
+  assertEqual(1.0, DALTON * AVOGADRO, 1e-5);
 }
 
 
@@ -166,7 +170,7 @@ unittest(test_weight_formula_II)
 unittest(test_massPercentage)
 {
   PTOE ptoe;
-  
+
   fprintf(stderr, "%f\n", ptoe.massPercentage("Cl2", "Cl"));
   fprintf(stderr, "%f\n", ptoe.massPercentage("NaCl", "Na"));
   fprintf(stderr, "%f\n", ptoe.massPercentage("NaCl", "Cl"));

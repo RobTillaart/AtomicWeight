@@ -201,15 +201,20 @@ of the whole formula once.
 
 #### AVOGADRO
 
-The library now provides **const float AVOGADRO = 6.02214076e+23**.
-It is not directly used in the library but fits the scope of the library. 
+The library now provides two SI constants:
+- **const float AVOGADRO = 6.02214076e+23** number of particles in one mole.
+- **const float DALTON = 1.66053907e-24** weight of one nucleon in grams.
+- relation: DALTON \* AVOGADRO == 1.0
+
+These constants are not directly used in the library however they fit the scope of the library. 
 
 The **AVOGADRO** constant is the proportionality factor that relates the number of constituent particles 
 (usually molecules, atoms, or ions) in a sample with the amount of substance in that sample.
 
-source - https://en.wikipedia.org/wiki/Avogadro_constant
+From - https://en.wikipedia.org/wiki/Avogadro_constant
 
-Use https://github.com/RobTillaart/printHelpers to print the scientific notation of large numbers.
+Use https://github.com/RobTillaart/printHelpers to print numbers in the scientific notation.
+This will prevent printing **OVF** overflow or **0.000**.
 
 
 #### Debug
