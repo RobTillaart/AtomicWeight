@@ -9,6 +9,7 @@
 #include "Arduino.h"
 #include "elements_float.h"
 
+
 //  VERSION   FACTOR    DESCRIPTION
 //  0.1.x     222.909   based op mapping max range 65535 == weight(118)
 //  0.2.x     201.3868  searched for minimal relative error.
@@ -66,3 +67,4 @@ void loop()
 
 
 //  -- END OF FILE --
+

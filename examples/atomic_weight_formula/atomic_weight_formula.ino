@@ -3,6 +3,7 @@
 // PURPOSE: demo
 //     URL: https://github.com/RobTillaart/AtomicWeight
 
+
 #include "Arduino.h"
 #include "AtomicWeight.h"
 
@@ -16,6 +17,7 @@ char formula3[24] = "CuO2";
 // char formula4[24] = "(COH)3(COH)2COH";
 // char formula4[24] = "(CH)6O6";
 char formula4[24] = "xH2";  // fails => 0;
+
 
 void setup()
 {
@@ -74,9 +76,11 @@ void setup()
   Serial.println(ptoe.weight("(H2O)255"));
 }
 
+
 void loop()
 {
 }
 
 
 //  -- END OF FILE --
+
