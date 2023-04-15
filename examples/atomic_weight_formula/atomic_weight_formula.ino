@@ -60,6 +60,18 @@ void setup()
   Serial.print(formula4);
   Serial.print(" \t");
   Serial.println(ptoe.weight(formula4));
+  
+  Serial.print("()");
+  Serial.print(" \t");
+  Serial.println(ptoe.weight("()"));
+  
+  Serial.print("(H2O)");
+  Serial.print(" \t");
+  Serial.println(ptoe.weight("(H2O)"));
+ 
+  Serial.print("(H2O)255");
+  Serial.print(" \t");
+  Serial.println(ptoe.weight("(H2O)255"));
 }
 
 void loop()
@@ -67,4 +79,4 @@ void loop()
 }
 
 
-// -- END OF FILE --
+//  -- END OF FILE --

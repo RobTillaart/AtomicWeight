@@ -226,7 +226,7 @@ float PTOE::_weight(const char sep, const char * abbrev)
   float sum = 0;
   float w   = 0;
   char elem[3] = { 0, 0, 0 };
-  int count = 0;
+  uint32_t count = 0;
 
   while (*p != sep)
   {
@@ -283,7 +283,7 @@ uint32_t PTOE::_count(const char sep, const char * abbrev)
 {
   uint32_t sum = 0;
   char elem[3] = { 0, 0, 0 };
-  int count = 0;
+  uint32_t count = 0;
   int w = 0;
 
   while (*p != sep)

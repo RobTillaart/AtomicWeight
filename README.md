@@ -28,7 +28,7 @@ This latter function allows the library to calculate the **massPercentage()** to
 
 The library has a **count()** function, to count the atoms in a given formula.
 Derived is the **atomPercentage()** function which returns the percentage of atoms 
-that is of a certain element. Oxygen in **H2S04** is 4 in 7 which is about 57%.
+that is of a certain element. Oxygen in **H2S04** is 4 in 7 which is about 57.14%.
 
 The library supports conversion from moles to grams and back.
 This allows one to easily get the amount of grams of some formula one has to weigh 
@@ -109,6 +109,17 @@ Maximum number of elements is hardcoded to 20, which is often enough.
 Note: el should be between 0 and the maximum number returned by **splitElements()**.
 See example.
 
+```cpp
+char formula[24] = "YBa2Cu3O7";
+nr = splitElements(formula);
+for (int i = 0; i < nr; i++)
+{
+  Serial.print(PTOE.massPercentage(formula, element(i)), 3);
+  Serial.print("%\t");
+  Serial.print(element(i));
+  Seriel.println();
+}
+```
 
 #### AtomPercentage
 
@@ -118,6 +129,11 @@ See example.
   - Returns 0 if it cannot parse the formula given.
 - **float atomPercentage(const char \* formula, const char \* abbreviation)**
 Returns atom percentage of the selected element in a formula.
+
+
+```cpp
+ap = PTOE.atomPercentage("H2SO4", "O");
+```
 
 
 #### Conversion grams moles
@@ -155,7 +171,7 @@ of one element (by abbreviation) in a molecule.
 E.g one can weigh the H atoms in H2O (2 of 18).
 
 ```cpp
-aw = PTOE.weight("KOH", 2.3);
+aw = PTOE.weight("H2O", "H");
 ```
 
 
@@ -178,10 +194,17 @@ Valid formula's might look like:
 - "B" = single element, Hydrogen, 1 atom.
 - "Na" = single element, Sodium, 1 atom..
 - "C6" = single element, multiple times, Benzene.
-- "H2SO4" compound molecule, no groups (sulphuric acid).
-- "C6(COOH)2" repeating group, (artificial example).
-- "YBa2Cu3O7" compound molecule, == some superconductor-ish material.
-- "Ba((OH)4(COOH)2)c" recursive repeating groups (artificial example).
+- "H2SO4" = compound molecule, no groups (sulphuric acid).
+- "C6(COOH)2" = repeating group, (artificial example).
+- "(H2O)987" = 987 water molecules.
+- "YBa2Cu3O7" = compound molecule, == some superconductor-ish material.
+- "Ba((OH)4(COOH)2)3" - recursive repeating groups (artificial example).
+
+Numbers of an element or a group should be between 1 and 2^32-1 (uint32_t).
+However in practice values are relative small (< 100).
+- zero (0) is mapped upon 1.
+- very large numbers cause overflow when printing the output of functions.
+Use - https://github.com/RobTillaart/printHelpers if needed.
 
 
 #### MassPercentage
@@ -233,15 +256,11 @@ minimize the memory used for the elements mass lookup table.
 
 #### Should
 
-- add examples
 - extend formula parser with error codes.
   - which ones?
 - look for optimizations
   - 3x almost same parser
   - PROGMEM ?
-- table of English names
-  - separate include file!
-  - no library function.
 
 
 #### Could
@@ -255,7 +274,7 @@ minimize the memory used for the elements mass lookup table.
   - ==> more memory
 - support \[] square brackets too.
   - (NH4)2\[Pt(SCN)6]
-- functions around **AVOGADRO** number?
+- functions around **AVOGADRO** and **DALTON** number?
 
 
 #### Wont (unless)
