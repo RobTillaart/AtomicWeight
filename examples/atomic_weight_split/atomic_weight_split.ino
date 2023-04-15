@@ -53,7 +53,7 @@ void loop()
 }
 
 
-void test(char * formula)
+void test(const char * formula)
 {
   Serial.println();
   Serial.println(formula);

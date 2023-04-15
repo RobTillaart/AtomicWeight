@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.2.0] - 2023-04-15
+- use new weight factor 201.3868 to reduce maximum relative error
+- create separate **elements_uint16.h** file.
+- moved **ATOMIC_WEIGHT_FACTOR** to **elements_uint16.h** file.
+- updated unit test to new weight factor
+- add const float **AVOGADRO** = 6.02214076e+23;
+- updated readme.md
+
+
 ## [0.1.5] - 2023-04-13
 - add **moles2grams(formula, moles)**
 - add **grams2moles(formula, grams)**
@@ -16,7 +25,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - add define for **ATOMIC_WEIGHT_MAX_SPLIT_LIST**
 - update keywords.txt.
 - minor edits.
-
 
 ## [0.1.4] - 2023-04-12
 - add **splitElements()** split a formula in an internal list of elements.

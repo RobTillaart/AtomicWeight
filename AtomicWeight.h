@@ -3,19 +3,24 @@
 //    FILE: AtomicWeight.h
 //  AUTHOR: Rob Tillaart
 //    DATE: 2022-03-09
-// VERSION: 0.1.5
+// VERSION: 0.2.0
 // PURPOSE: Arduino library for atomic weights
 //     URL: https://github.com/RobTillaart/AtomicWeight
 
 
 #include "Arduino.h"
 
-#define ATOMIC_WEIGHT_LIB_VERSION         (F("0.1.5"))
+
+#define ATOMIC_WEIGHT_LIB_VERSION         (F("0.2.0"))
 
 
 #ifndef ATOMIC_WEIGHT_MAX_SPLIT_LIST
 #define ATOMIC_WEIGHT_MAX_SPLIT_LIST 20
 #endif
+
+
+const float AVOGADRO = 6.02214076e+23;
+
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -74,7 +79,6 @@ public:
 
 private:
   uint8_t     _size;
-  const float _weightFactor = 1.0 / 222.909;
 
   //  if (el == NULL) ==> whole weight otherwise only of element.
   float       _weight(char sep, const char * abbrev);
