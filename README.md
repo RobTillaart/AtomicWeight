@@ -157,7 +157,7 @@ grams = PTOE.moles2grams("KOH", 2.3);
 
 #### Weight
 
-The unit of weight is **Daltons** or the atomic weight, think of it as the number of nucleons.
+The unit of weight is **Daltons** (Da) or the atomic mass unit (amu), think of it as the number of nucleons.
 A **Dalton** is defined as 1/12th of the weight of an Carbon atom.
 
 The **weight(uint8_t element)** call returns the weight of a single atom (by index).
@@ -203,9 +203,9 @@ Valid formula's might look like:
 - "Ba((OH)4(COOH)2)3" - recursive repeating groups (artificial example).
 
 Numbers of an element or a group should be between 1 and 2^32-1 (uint32_t).
-However in practice values are relative small (< 100).
+However in practice values are relative small (< 20).
 - zero (0) is mapped upon 1.
-- very large numbers cause overflow when printing the output of functions.
+- very large numbers cause overflow when printing the output of some functions.
 Use - https://github.com/RobTillaart/printHelpers if needed.
 
 
@@ -218,7 +218,6 @@ This is calculated by dividing the weight of the element by the total weight.
 ```cpp
 mp = PTOE.massPercentage("H2SO4", "O");
 ```
-
 
 If you want to do that for all elements it might be more efficient to calculate the weight 
 of the whole formula once.
@@ -236,7 +235,8 @@ The library provides the following (SI) constants:
 - **const float DALTON_EV = 931.4940954e12** == DALTON / ELEKTRON_VOLT_GRAM.
 Can be used to convert the atomic mass to electron volt.
 
-These constants are not directly used in the library however they fit the scope of the library. 
+These constants are not directly used in the library however they fit the scope of the library.
+There will be functions based upon these constants in the future.
 
 The **AVOGADRO** constant is the proportionality factor that relates the number of constituent particles 
 (usually molecules, atoms, or ions) in a sample with the amount of substance in that sample.
