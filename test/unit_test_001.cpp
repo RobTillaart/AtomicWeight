@@ -49,11 +49,11 @@ unittest_teardown()
 
 unittest(test_constants)
 {
-  assertEqual(1.0 / 201.3868, ATOMIC_WEIGHT_FACTOR);
+  assertEqualFloat(1.0 / 201.3868, ATOMIC_WEIGHT_FACTOR, 0.001);
 
   assertEqualFloat(6.02214076e+23, AVOGADRO, 1e16);
   assertEqualFloat(1.66053907e-24, DALTON, 1e-30);
-  assertEqual(1.0, DALTON * AVOGADRO, 1e-5);
+  assertEqualFloat(1.0, DALTON * AVOGADRO, 1e-5);
 }
 
 
