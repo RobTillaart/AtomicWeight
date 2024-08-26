@@ -2,7 +2,7 @@
 //    FILE: AtomicWeight.cpp
 //  AUTHOR: Rob Tillaart
 //    DATE: 2022-03-09
-// VERSION: 0.2.2
+// VERSION: 0.3.0
 // PURPOSE: Arduino library for atomic weights
 //     URL: https://github.com/RobTillaart/AtomicWeight
 
@@ -245,7 +245,7 @@ float PTOE::_weight(const char separator, const char * abbrev)
   float sum = 0;
   float w   = 0;
   char elem[3] = { 0, 0, 0 };
-  uint32_t count = 0;
+  float count = 0;
 
   while (*p != separator)
   {
@@ -285,6 +285,17 @@ float PTOE::_weight(const char separator, const char * abbrev)
       count = count * 10 + (*p - '0');
       p++;
     }
+    if (*p == '.')  //  floating point numbers
+    {
+      p++;  //  skip decimal .
+      float divider = 0.1;
+      while (isdigit(*p))
+      {
+        count += (*p - '0') * divider;
+        divider *= 0.1;
+        p++;
+      }
+    }
     //  correct for no digits
     if (count == 0) count = 1;
 
@@ -297,11 +308,11 @@ float PTOE::_weight(const char separator, const char * abbrev)
 }
 
 
-uint32_t PTOE::_count(const char separator, const char * abbrev)
+float PTOE::_count(const char separator, const char * abbrev)
 {
-  uint32_t sum = 0;
+  float sum = 0;
   char elem[3] = { 0, 0, 0 };
-  uint32_t count = 0;
+  float count = 0;
   int w = 0;
 
   while (*p != separator)
@@ -341,6 +352,17 @@ uint32_t PTOE::_count(const char separator, const char * abbrev)
     {
       count = count * 10 + (*p - '0');
       p++;
+    }
+    if (*p == '.')  //  floating point numbers
+    {
+      p++;  //  skip decimal .
+      float divider = 0.1;
+      while (isdigit(*p))
+      {
+        count += (*p - '0') * divider;
+        divider *= 0.1;
+        p++;
+      }
     }
     //  correct for no digits
     if (count == 0) count = 1;
