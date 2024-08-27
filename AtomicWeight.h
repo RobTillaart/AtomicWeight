@@ -22,8 +22,8 @@
 //  Miscellaneous related constants.
 const float AVOGADRO            = 6.02214076e+23;       //  1.0 / DALTON.
 const float DALTON              = 1.66053907e-24;       //  weight in grams of one nucleon.
-const float PROTON_WEIGHT       = 1.6726231E-24;        //
-const float NEUTRON_WEIGHT      = 1.6749286E-24;        //
+const float PROTON_WEIGHT       = 1.6726231e-24;        //
+const float NEUTRON_WEIGHT      = 1.6749286e-24;        //
 const float ELECTRON_WEIGHT     = 9.10938356e-28;       //  weight in grams of one electron.
 const float DALTON2EV           = 931494697.25613;      //
 

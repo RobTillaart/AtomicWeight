@@ -213,8 +213,8 @@ Valid formula's might look like:
 - "Ba((OH)4(COOH)2)3" - recursive repeating groups (artificial example).
 - "(Mg0.4Fe1.6)2.0SiO4" == Olivine, float indices
 
-Numbers of an element or a group should be between 1 and 2^20 (float).
-However in practice the values used are relative small (< 100).
+In theory the numbers of an element or a group should be between 1 and 2^20 (float).
+In practice however, the values used are relative small (< 100 or 1000).
 - zero (0) is mapped upon 1.
 - very large numbers cause overflow when printing the output of some functions.
 Use - https://github.com/RobTillaart/printHelpers if needed.
@@ -227,7 +227,7 @@ a selected element has in a formula, e.g. the weight of the Oxygen in **H2SO4**.
 This is calculated by dividing the weight of the element by the total weight.
 
 ```cpp
-mp = PTOE.massPercentage("H2SO4", "O");
+float mp = PTOE.massPercentage("H2SO4", "O");
 ```
 
 If you want to do that for all elements it might be more efficient to calculate the weight 
@@ -241,8 +241,8 @@ The library provides the following (SI) constants:
 - **const float AVOGADRO = 6.02214076e+23** number of particles in one mole.
 - **const float DALTON = 1.66053907e-24** weight of one nucleon in grams (average).
   - relation: DALTON \* AVOGADRO == 1.0
-- **const float PROTON_WEIGHT = 1.6726231E-24** weight in grams of an proton.
-- **const float NEUTRON_WEIGHT = 1.6749286E-24** weight in grams of an neutron.
+- **const float PROTON_WEIGHT = 1.6726231e-24** weight in grams of an proton.
+- **const float NEUTRON_WEIGHT = 1.6749286e-24** weight in grams of an neutron.
 - **const float ELECTRON_WEIGHT = 9.10938356e-28** weight in grams of one electron.
 - **const float DALTON2EV = 931494697.25613** e.g. 1 proton = 931 MeV.
 Can be used to convert the atomic mass to electron volt.
@@ -269,10 +269,8 @@ minimize the memory used for the elements mass lookup table.
 
 #### Must
 
-- improve documentation
-  - reorganize.
-- float => double 
-- EV is at the end of range float...
+- improve and reorganize documentation
+- float => double for precision.
 
 #### Should
 
