@@ -98,6 +98,17 @@ float PTOE::massPercentage(const char * formula, const char * abbrev)
 }
 
 
+float PTOE::weightEV(const uint8_t element)
+{
+  return weight(element) * DALTON2EV;
+}
+
+
+float PTOE::weightEV(const char * formula, const char * abbrev)
+{
+  return weight(formula, abbrev) * DALTON2EV;
+}
+
 
 ////////////////////////////////////////////////////////////////
 //
@@ -112,6 +123,12 @@ float PTOE::moles2grams(const char * formula, float moles)
 float PTOE::grams2moles(const char * formula, float grams)
 {
   return grams / weight(formula);
+}
+
+
+float PTOE::dalton2EV(float Dalton)
+{
+  return Dalton * DALTON2EV;
 }
 
 

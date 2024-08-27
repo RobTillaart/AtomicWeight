@@ -16,6 +16,8 @@ Arduino library for atomic weights from the periodic table of elements, and rela
 
 ## Description
 
+**Experimental**
+
 This library is mainly written to be used for educational purposes.
 Of course are other applications possible.
 Learning the **periodic table of elements**, the abbreviations and weights.
@@ -45,7 +47,7 @@ Another application for the conversion functions is create lookup-tables, see ex
 Note: the library is experimental. More testing is needed. Feedback welcome.
 
 
-#### Internal
+### Internal
 
 The PTOE class uses a table with "scaled" weights to save RAM.
 - it stores weights as **uint16_t**, instead of floats (saves 236 bytes).
@@ -62,7 +64,7 @@ The PTOE class uses a table with "scaled" weights to save RAM.
 - relative error per element is less than 0.15%.
 
 
-#### Related
+### Related
 
 List of formulae to play with.
 - https://en.wikipedia.org/wiki/Glossary_of_chemical_formulae
@@ -104,7 +106,7 @@ Note: the find function is case sensitive.
 If the element is out of range **NULL** will be returned.
 
 
-#### SplitElements 
+### SplitElements 
 
 - **uint8_t splitElements(const char \* formula)** split a formula in an internal list of elements.
 Returns the number of different elements found.
@@ -125,7 +127,7 @@ for (int i = 0; i < nr; i++)
 }
 ```
 
-#### AtomPercentage
+### AtomPercentage
 
 - **uint32_t count(const char \* formula, const char \* abbreviation = NULL)**
   - If (abbreviation != NULL) returns the total atoms of one element in a formula.
@@ -140,7 +142,7 @@ ap = PTOE.atomPercentage("H2SO4", "O");
 ```
 
 
-#### Conversion grams moles
+### Conversion grams moles
 
 - **float moles2grams(const char \* formula, float moles = 1.0)**
 Returns the amount of grams needed for a given amount of moles.
@@ -157,7 +159,7 @@ grams = PTOE.moles2grams("KOH", 2.3);
 ```
 
 
-#### Weight
+### Weight
 
 The unit of weight is **Daltons** (Da) or the atomic mass unit (amu), think of it as the number of nucleons.
 A **Dalton** is defined as 1/12th of the weight of an Carbon atom.
@@ -178,8 +180,13 @@ E.g one can weigh the H atoms in H2O (2 of 18).
 aw = PTOE.weight("H2O", "H");
 ```
 
+0.3.0 added conversion of weights to electronVolts.
 
-#### Formulas
+- **float weightEV(uint8_t element)**
+- **float weightEV(char \* formula, char \* abbrev = NULL)**
+
+
+### Formulas
 
 All element abbreviations are one or two characters long.
 The first char must be upper case, the (optional) second must be lower case.
@@ -213,7 +220,7 @@ However in practice the values used are relative small (< 100).
 Use - https://github.com/RobTillaart/printHelpers if needed.
 
 
-#### MassPercentage
+### MassPercentage
 
 The **massPercentage(formula, abbreviation)** function can determine the percentage of the weight 
 a selected element has in a formula, e.g. the weight of the Oxygen in **H2SO4**.
@@ -227,20 +234,20 @@ If you want to do that for all elements it might be more efficient to calculate 
 of the whole formula once.
 
 
-#### Avogadro, Dalton, electronVolt.
+### Avogadro, Dalton, electronVolt.
+
 
 The library provides the following (SI) constants:
 - **const float AVOGADRO = 6.02214076e+23** number of particles in one mole.
-- **const float DALTON = 1.66053907e-24** weight of one nucleon in grams.
+- **const float DALTON = 1.66053907e-24** weight of one nucleon in grams (average).
   - relation: DALTON \* AVOGADRO == 1.0
-- **const float ELEKTRON_VOLT_JOULE = 1.602176565e-19** 1 eV in Joule
-- **const float ELEKTRON_VOLT_GRAM = 1.7826619e-39** 1 eV in grams  (E = Mc2)
-Note this constant is very close to the float minimum.
-- **const float DALTON_JOULE = 1.036427015e5** == DALTON / ELEKTRON_VOLT_JOULE.
-- **const float DALTON_EV = 931.4940954e12** == DALTON / ELEKTRON_VOLT_GRAM.
+- **const float PROTON_WEIGHT = 1.6726231E-24** weight in grams of an proton.
+- **const float NEUTRON_WEIGHT = 1.6749286E-24** weight in grams of an neutron.
+- **const float ELECTRON_WEIGHT = 9.10938356e-28** weight in grams of one electron.
+- **const float DALTON2EV = 931494697.25613** e.g. 1 proton = 931 MeV.
 Can be used to convert the atomic mass to electron volt.
 
-These constants are not directly used in the library however they fit the scope of the library.
+These constants are not all used in the library however they fit the scope of the library.
 There will be functions based upon these constants in the future.
 
 The **AVOGADRO** constant is the proportionality factor that relates the number of constituent particles 
@@ -252,7 +259,7 @@ Use https://github.com/RobTillaart/printHelpers to print numbers in the scientif
 This will prevent printing **OVF** overflow or **0.000**.
 
 
-#### Debug
+### Debug
 
 - **float weightFactor()** returns the weightFactor, that was used to
 minimize the memory used for the elements mass lookup table.
@@ -273,15 +280,12 @@ minimize the memory used for the elements mass lookup table.
   - **uint32_t protons(formula)** worker, formula can be single element.
   - **uint32_t neutrons(formula)** uses protons()
   - **uint32_t electrons(formula)** uses protons()
-- add weight of electron as constant. for completeness.
-- functions around **AVOGADRO**, **DALTON** etc.
-  - **float weightEV(formula)**
-  - **float dalton2EV(float Dalton)** to express mass in eV.
-  - **float dalton2Joule(float Dalton)**
-- extend minerals.h
+- handle Fe2+ Fe3+ (ignore number when encountering +)
 
 #### Could
 
+- support progmem formulas **weight(F("CaO2"))**?
+  - user could use a char buffer to copy.
 - extend unit tests
 - extend formula parser with error codes.
   - which ones?
