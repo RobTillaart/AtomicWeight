@@ -324,12 +324,14 @@ minimize the memory used for the elements mass lookup table.
   element 0 is defined as n conflict with N
 - support hydrates ?
   - **Ba(BrO3)2·2H2O**  new separator + starts with number.
+    ==> **Ba(BrO3)2(H2O)2** or **Ba(BrO3)2·(H2O)2** or ??
   - other liquids than water?
   - https://en.wikipedia.org/wiki/Glossary_of_chemical_formulae
 - is there a faster data structure?
   - search by nr is O(1)
   - search by name is O(n)
   - only if more RAM is used. => not
+- selection operator (Mg,Fe,Al)? not deterministic
 - parameters element should be less than \_size
   - user responsibility
 - more information?
