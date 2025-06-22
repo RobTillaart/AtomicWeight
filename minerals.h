@@ -7,6 +7,7 @@
 //     URL: https://github.com/RobTillaart/AtomicWeight
 //
 
+
 /////////////////////////////////////////////////////////////////////////
 //
 //  The formulae are based upon Cornelis Klein, Anthony Philpotts book
@@ -23,7 +24,13 @@
 //
 //  to be extended,
 //
+//  DISCLAIMER
+//  Formulas might differ to be parseable by the atomicWeight class.
+//
 
+//
+//  IGNEOUS ROCK
+//
 //  7.5
 #define ALBITE              "NaAlSi3O8"
 #define ANORTHITE           "CaAl2Si2O8"
@@ -94,6 +101,9 @@
 #define HYDROXYAPATITE      "Ca5(PO4)3(OH)"
 
 
+//
+//  SEDIMENTARY ROCK
+//
 //  Page 237
 #define JADEITE             "NaAlSi2O6"
 //  11.3
@@ -124,6 +134,9 @@
 #define FLUORAPATITE        "Ca5(PO4)3(F)"
 
 
+//
+//  METAMORPHIC ROCK
+//
 //  14.2 GARNET
 //  soyralspite group
 #define PYROPE              "Mg3Al2Si3O12"

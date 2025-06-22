@@ -24,7 +24,7 @@ void setup()
   Serial.println();
 
   Serial.println();
-  Serial.println("IGNEOUS ROCK");
+  Serial.println("IGNEOUS ROCK (7)");
   Serial.println("NAME\tWEIGHT\tFORMULA\n");
 
   printMineral("ALBITE", ALBITE);
