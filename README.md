@@ -126,12 +126,16 @@ See example.
 
 ```cpp
 char formula[24] = "YBa2Cu3O7";
-nr = splitElements(formula);
+Serial.println(formula);
+nr = PTOE.splitElements(formula);
 for (int i = 0; i < nr; i++)
 {
-  Serial.print(PTOE.massPercentage(formula, element(i)), 3);
+  int elem = PTOE.element(i);
+  Serial.print(PTOE.massPercentage(formula, PTOE.name(elem), 3);
   Serial.print("%\t");
-  Serial.print(element(i));
+  Serial.print(elem);
+  Serial.print("%\t");
+  Serial.print(PTOE.name(elem));
   Seriel.println();
 }
 ```
