@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.x.x] - 20
+- update minerals.h (add formulas chapter 15,16,17)
+- add atomic_weight_minerals_3.ino
+
+
 ## [0.3.2] - 2025-06-22
 - update minerals.h (add formulas chapter 14)
 - split minerals example in 3 parts
