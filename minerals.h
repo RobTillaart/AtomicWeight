@@ -19,13 +19,13 @@
 //  NOT SUPPORTED: Fe2+ or Fe3+    (potential,   could be ignored!)
 //  NOT SUPPORTED: comma operator  (selection,   should be made explicit)
 //  NOT SUPPORTED: Fe1-x           (less than 1, should be made explicit)
-//  NOT SUPPORTED: 4(FORMULA)      (multiple)  ==> (FORMULA)4 workaround
-//  NOT SUPPORTED  .4(H2O)         (hydration) ==> (H2O)4 workaround.
+//  NOT SUPPORTED: 4(FORMULA)      (multiple)  ==> (FORMULA)4 workaround  implement square []?
+//  NOT SUPPORTED  .4(H2O)         (hydration) ==> (H2O)4 workaround.     implement square []?
 //
 //  to be extended,
 //
 //  DISCLAIMER
-//  Formulas might differ to be parseable by the atomicWeight class.
+//  Formulas might differ to be parse-able by the atomicWeight class.
 //
 
 //
@@ -231,6 +231,11 @@
 //
 //  ECONOMIC MINERALS (chap 16)
 //
+//  16.0
+#define ACANTHITE           "Ag2S"
+#define PROUSTITE           "Ag3AsS3"
+#define PYRARGTRITE         "Ag3SbS3"
+
 //  16.6
 #define GALENA              "PbS"
 //  16.7
@@ -258,12 +263,14 @@
 //  16.18
 #define RUBY                "Al2O3"     // CORUMDUM
 #define SAPPHIRE            "Al2O3"     // CORUMDUM
+#define BERYL               "Be3Al2SI6O18"
 #define EMERALD             "Be3Al2SI6O18"
 #define HELIODOR            "Be3Al2SI6O18"
 #define AQUAMARINE          "Be3Al2SI6O18"
 #define JADE                "NaAlSi2O6"   //  JADEITE
 #define TURQOISE            "CuAl8(PO4)(OH)8(H20)5"   //  Cu may be replaced by Fe
-
+//  page 494
+#define CALAVERITE          "AuTe2"
 
 //
 //  RARE EARTH ELEMENTS (chap 17)

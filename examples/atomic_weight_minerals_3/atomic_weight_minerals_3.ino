@@ -40,8 +40,13 @@ void setup()
   printMineral("ANNIITE", ANNIITE);
   Serial.println();
 
+
   Serial.println("ECONOMIC MINERALS (16)");
   Serial.println("NAME\tWEIGHT\tFORMULA\n");
+
+  printMineral("ACANTHITE", ACANTHITE);
+  printMineral("PROUSTITE", PROUSTITE);
+  printMineral("PYRARGTRITE", PYRARGTRITE);
   printMineral("GALENA", GALENA);
   printMineral("SPHALERITE", SPHALERITE);
   printMineral("BORNITE", BORNITE);
@@ -53,22 +58,20 @@ void setup()
   printMineral("BARITE", BARITE);
   printMineral("SPODUMENE", SPODUMENE);
   Serial.println();
+
+
+  Serial.println("SOME GEMS (16)");
   Serial.println("NAME\tWEIGHT\tFORMULA\n");
   printMineral("RUBY", RUBY);
   printMineral("SAPPHIRE", SAPPHIRE);
+  printMineral("BERYL", BERYL);
   printMineral("EMERALD", EMERALD);
   printMineral("HELIODOR", HELIODOR);
   printMineral("AQUAMARINE", AQUAMARINE);
   printMineral("JADE", JADE);
   printMineral("TURQOISE", TURQOISE);
+  printMineral("CALAVERITE", CALAVERITE);
   Serial.println();
-
-  Serial.println("RARE EARTH MINERALS (16)");
-  Serial.println("NAME\tWEIGHT\tFORMULA\n");
-  printMineral("XENOTIME", XENOTIME);
-  printMineral("NATROLITE", NATROLITE);
-  printMineral("STIBILITE", STIBILITE);
-
 
   Serial.println();
   Serial.println("\ndone...");
@@ -88,5 +91,6 @@ void printMineral(const char * name, const char * formula)
   Serial.print("\t");
   Serial.println(formula);
 }
+
 
 //  -- END OF FILE --
