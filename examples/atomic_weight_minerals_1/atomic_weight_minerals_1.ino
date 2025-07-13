@@ -28,20 +28,20 @@ void setup()
   Serial.println("SEDIMENTARY ROCK (11)");
   Serial.println("NAME\tWEIGHT\tFORMULA\n");
 
-  printMineral("JADEITE", JADEITE);
-  printMineral("GOETHITE", GOETHITE);
-  printMineral("KAOLINITE", KAOLINITE);
-  printMineral("CALCITE", CALCITE);
-  printMineral("ARAGONITE", ARAGONITE);
-  printMineral("DOLOMITE", DOLOMITE);
-  printMineral("MAGNESITE", MAGNESITE);  
-  printMineral("SIDERITE", SIDERITE);
-  printMineral("RHODOCHROSITE", RHODOCHROSITE);
-  printMineral("HALITE", HALITE);
-  printMineral("SYLVITE", SYLVITE);
-  printMineral("GYPSUM", GYPSUM);
-  printMineral("ANHYDRITE", ANHYDRITE);
-  printMineral("FLUORAPATITE", FLUORAPATITE);
+  printWeight("JADEITE", JADEITE);
+  printWeight("GOETHITE", GOETHITE);
+  printWeight("KAOLINITE", KAOLINITE);
+  printWeight("CALCITE", CALCITE);
+  printWeight("ARAGONITE", ARAGONITE);
+  printWeight("DOLOMITE", DOLOMITE);
+  printWeight("MAGNESITE", MAGNESITE);  
+  printWeight("SIDERITE", SIDERITE);
+  printWeight("RHODOCHROSITE", RHODOCHROSITE);
+  printWeight("HALITE", HALITE);
+  printWeight("SYLVITE", SYLVITE);
+  printWeight("GYPSUM", GYPSUM);
+  printWeight("ANHYDRITE", ANHYDRITE);
+  printWeight("FLUORAPATITE", FLUORAPATITE);
 
   Serial.println();
   Serial.println("\ndone...");
@@ -53,7 +53,7 @@ void loop()
 }
 
 
-void printMineral(const char * name, const char * formula)
+void printWeight(const char * name, const char * formula)
 {
   Serial.print(name);
   Serial.print("\t");

@@ -248,21 +248,28 @@
 #define MARCASITE           "FeS2"    //  Polymorph PYRITE
 //  16.11
 #define MOLYBDENITE         "MoS2"
+#define BROCHANTHITE        "Cu4SO4(OH)6"
 //  16.12
 #define ARSENOPYRITE        "FeAsS"
 //  16.13
-//  #define BAUXITE         "AlO(OH)"   // variations.
+#define BAUXITE             "AlO(OH)"   // variations.
+#define DIASPORE            "AlO(OH)"
+#define GIBBSITE            "Al(OH)2"
+#define BOEHMITE            "AlO(OH)"
 //  16.14
 #define FLUORITE            "CaF2"
 //  16.15
 #define BARITE              "BaSO4"
+#define CELESTITE           "SrSO4"
 //  16.16
 #define SPODUMENE           "LiAlSi2O6"
+#define KUNZITE             "LiAlSi2O6"
 //  16.17
 //  #define LEPIDOLITE      "K(Li,Al)2-3(AlSi3O10)(OH,F)2"   // variations.
 //  16.18
 #define RUBY                "Al2O3"     // CORUMDUM
 #define SAPPHIRE            "Al2O3"     // CORUMDUM
+// #define TOPAZ.           "Al2Si4(F,OH)2"
 #define BERYL               "Be3Al2SI6O18"
 #define EMERALD             "Be3Al2SI6O18"
 #define HELIODOR            "Be3Al2SI6O18"

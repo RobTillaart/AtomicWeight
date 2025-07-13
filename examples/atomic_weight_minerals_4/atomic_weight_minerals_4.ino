@@ -27,9 +27,9 @@ void setup()
 
   Serial.println("RARE EARTH MINERALS (17)");
   Serial.println("NAME\tWEIGHT\tFORMULA\n");
-  printMineral("XENOTIME", XENOTIME);
-  printMineral("NATROLITE", NATROLITE);
-  printMineral("STIBILITE", STIBILITE);
+  printWeight("XENOTIME", XENOTIME);
+  printWeight("NATROLITE", NATROLITE);
+  printWeight("STIBILITE", STIBILITE);
 
 
   Serial.println();
@@ -42,7 +42,7 @@ void loop()
 }
 
 
-void printMineral(const char * name, const char * formula)
+void printWeight(const char * name, const char * formula)
 {
   Serial.print(name);
   Serial.print("\t");
