@@ -19,13 +19,13 @@
 //  NOT SUPPORTED: Fe2+ or Fe3+    (potential,   could be ignored!)
 //  NOT SUPPORTED: comma operator  (selection,   should be made explicit)
 //  NOT SUPPORTED: Fe1-x           (less than 1, should be made explicit)
-//  NOT SUPPORTED: 4(FORMULA)      (multiple)  ==> (FORMULA)4 workaround
-//  NOT SUPPORTED  .4(H2O)         (hydration) ==> (H2O)4 workaround.
+//  NOT SUPPORTED: 4(FORMULA)      (multiple)  ==> (FORMULA)4 workaround  implement square []?
+//  NOT SUPPORTED  .4(H2O)         (hydration) ==> (H2O)4 workaround.     implement square []?
 //
 //  to be extended,
 //
 //  DISCLAIMER
-//  Formulas might differ to be parseable by the atomicWeight class.
+//  Formulas might differ to be parse-able by the atomicWeight class.
 //
 
 //
@@ -231,6 +231,11 @@
 //
 //  ECONOMIC MINERALS (chap 16)
 //
+//  16.0
+#define ACANTHITE           "Ag2S"
+#define PROUSTITE           "Ag3AsS3"
+#define PYRARGTRITE         "Ag3SbS3"
+
 //  16.6
 #define GALENA              "PbS"
 //  16.7
@@ -243,27 +248,36 @@
 #define MARCASITE           "FeS2"    //  Polymorph PYRITE
 //  16.11
 #define MOLYBDENITE         "MoS2"
+#define BROCHANTHITE        "Cu4SO4(OH)6"
 //  16.12
 #define ARSENOPYRITE        "FeAsS"
 //  16.13
-//  #define BAUXITE         "AlO(OH)"   // variations.
+#define BAUXITE             "AlO(OH)"   // variations.
+#define DIASPORE            "AlO(OH)"
+#define GIBBSITE            "Al(OH)2"
+#define BOEHMITE            "AlO(OH)"
 //  16.14
 #define FLUORITE            "CaF2"
 //  16.15
 #define BARITE              "BaSO4"
+#define CELESTITE           "SrSO4"
 //  16.16
 #define SPODUMENE           "LiAlSi2O6"
+#define KUNZITE             "LiAlSi2O6"
 //  16.17
 //  #define LEPIDOLITE      "K(Li,Al)2-3(AlSi3O10)(OH,F)2"   // variations.
 //  16.18
 #define RUBY                "Al2O3"     // CORUMDUM
 #define SAPPHIRE            "Al2O3"     // CORUMDUM
+// #define TOPAZ.           "Al2Si4(F,OH)2"
+#define BERYL               "Be3Al2SI6O18"
 #define EMERALD             "Be3Al2SI6O18"
 #define HELIODOR            "Be3Al2SI6O18"
 #define AQUAMARINE          "Be3Al2SI6O18"
 #define JADE                "NaAlSi2O6"   //  JADEITE
 #define TURQOISE            "CuAl8(PO4)(OH)8(H20)5"   //  Cu may be replaced by Fe
-
+//  page 494
+#define CALAVERITE          "AuTe2"
 
 //
 //  RARE EARTH ELEMENTS (chap 17)
@@ -274,9 +288,10 @@
 #define XENOTIME            "YPO4"
 //  #define ALLANITE        "(Ca,Ce, La)2(Al,Fe++,Fe+++)3(SiO4)(Si2O7)(OH)"  //  see 7.22
 //  17.7  Zeolites
+//  #define CHABAZITE  see 14.28
 #define NATROLITE           "Na2Al2Si3O10(H2O)5"
 //  #define HEULANDITE      "(Na,Ca)2-3Al3(Al,Si)2Si13O36(H2O)12"
-#define STIBILITE           "NaCa2Al5Si13O365(H2O)14"   //  specific variation of HEULANDITE
+#define STILBITE           "NaCa2Al5Si13O365(H2O)14"   //  specific variation of HEULANDITE
 
 
 //
