@@ -288,9 +288,10 @@
 #define XENOTIME            "YPO4"
 //  #define ALLANITE        "(Ca,Ce, La)2(Al,Fe++,Fe+++)3(SiO4)(Si2O7)(OH)"  //  see 7.22
 //  17.7  Zeolites
+//  #define CHABAZITE  see 14.28
 #define NATROLITE           "Na2Al2Si3O10(H2O)5"
 //  #define HEULANDITE      "(Na,Ca)2-3Al3(Al,Si)2Si13O36(H2O)12"
-#define STIBILITE           "NaCa2Al5Si13O365(H2O)14"   //  specific variation of HEULANDITE
+#define STILBITE           "NaCa2Al5Si13O365(H2O)14"   //  specific variation of HEULANDITE
 
 
 //

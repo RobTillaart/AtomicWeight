@@ -29,7 +29,7 @@ void setup()
   Serial.println("NAME\tWEIGHT\tFORMULA\n");
   printWeight("XENOTIME", XENOTIME);
   printWeight("NATROLITE", NATROLITE);
-  printWeight("STIBILITE", STIBILITE);
+  printWeight("STILBITE", STILBITE);
 
 
   Serial.println();
